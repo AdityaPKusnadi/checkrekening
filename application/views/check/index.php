@@ -68,6 +68,8 @@
             </div>
             <h3>Data Terverifikasi</h3>
             <p class="lead mb-0">data nomer rekening pernah di laporkan di sistem kami!</p>
+            <p class="lead mb-0">Ditemukan <span id="jmllapor"></span> laporan!</p>
+            <p class="lead mb-0" id="link"></p>
           </div>
         </div>
       <!--  -->
@@ -111,7 +113,7 @@
       <div class="row">
         <div class="col-xl-9 mx-auto">
           <h2 class="mb-4">Ingin melaporkan nomer rekening? Periksa Sekarang!</h2>
-          <button type="submit" class="btn btn-block btn-lg btn-primary">Lapor!</button>
+          <a  class="btn btn-block btn-lg btn-primary" href="<?= site_url('checkrekening/lapor/'.$this->session->has_userdata('user').'') ?>">Lapor!</a>
         </div>
       </div>
     </div>
@@ -159,7 +161,9 @@
         dataType: "text",
         success: function (response) {
         var data =  JSON.parse(response);
+        $('#jmllapor').html(data.length);
         console.log(data);
+
         if(data == "404"){
           $('#notifikasi404').show();
           $('#notifikasiverif').removeAttr('style').hide();
@@ -168,16 +172,9 @@
           $('#notifikasiverif').show();
           $('#notifikasi404').removeAttr('style').hide();
           $('#no_rekening').val('');
-          for (let i = 0; i < data.length; i++) {
-            // console.log(data[i].rekening_id);
-            html="<table>";
-            html+="<tr>";
-            html+="<td><img src='admin/assets/img/barang/"+ data[i].foto_utama+ "' width='200px' height='200px'></td>";
-            html+="<td>"+'['+'Nomer Rekening:'+data[i].rekening+'] '+' ['+'Bank:'+data[i].nama_bank+'] '+ data[i].kronologi +"</td>";
-            html+="</tr>";
-            html+="</table>";
-          }
-          $("#informasi").html(html);
+          html = "<a href='<?= site_url('/checkrekening/list/')?>"+nomer_rekening+"'>Detail!</a>";
+          console.log(html);
+          $("#link").html(html);
         }
           
         }

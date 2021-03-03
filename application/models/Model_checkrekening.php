@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Model_checkrekening extends CI_Model {
 
 	public function searchRek($norek){
-		$query = $this->db->query("SELECT a.*,b.*,c.nama as nama_bank FROM tbl_rekening a LEFT JOIN tbl_rekening_foto b ON a.rekening_id=b.rekening_id LEFT JOIN tbl_bank c ON a.bank_id=c.bank_id WHERE a.deleted=0 and a.rekening='$norek' ");
+		$query = $this->db->query("SELECT a.*,b.*,c.nama as nama_bank,if(d.nama is null,f.nama,d.nama) as user_input FROM tbl_rekening a LEFT JOIN tbl_rekening_foto b ON a.rekening_id=b.rekening_id LEFT JOIN tbl_bank c ON a.bank_id=c.bank_id LEFT JOIN tbl_admin d ON (d.admin_id = a.create_by) LEFT JOIN tbl_users f ON (f.users_id=a.create_by) WHERE a.deleted=0 and a.rekening='$norek' ");
 		$data = $query->result();
 		return $data;
 	}

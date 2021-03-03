@@ -266,6 +266,12 @@ class Checkrekening extends MX_Controller {
 			redirect(site_url('checkrekening/listRekening/'.$this->session->user->users_id)); 
 		}
 	}
+
+	public function list($nomer_rekening){
+		$data['daftar']=$this->model_checkrekening->searchRek($nomer_rekening);
+		// var_dump($data);die;
+		$this->load->view('check/listdata',$data);
+	}
 	
 }
 
