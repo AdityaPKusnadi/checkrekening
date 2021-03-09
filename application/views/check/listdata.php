@@ -47,7 +47,7 @@ body {
                     </div>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <div class="d-flex flex-row"> <span class="text-muted fw-normal fs-10"><?= $d->nama_bank ?></span> </div>
+                    <div class="d-flex flex-row"> <span class="text-muted fw-normal fs-10"><?= $d->nama_bank .' | '. $d->atas_nama  ?></span> </div>
                 </div>
             </div>  
             <?php endforeach;?>
