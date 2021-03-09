@@ -40,7 +40,7 @@ body {
             </div>
             <?php foreach( $daftar as $d) :?>
               <div class="card p-3 mb-2">
-                <div class="d-flex flex-row"> <img src="<?= base_url('admin/assets/img/barang/').$d->foto_utama ?>" height="100" width="100" class="rounded-circle">
+                <div class="d-flex flex-row"> <img src="<?= base_url('admin/assets/img/barang/').$d->foto_utama ?>" height="400" width="400" class="rounded-circle">
                     <div class="d-flex flex-column ms-2">
                         <h6 class="mb-1 text-primary"><?= $d->user_input ?></h6>
                         <p class="comment-text"><?= $d->kronologi ?></p>
