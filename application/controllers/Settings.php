@@ -15,7 +15,7 @@ class Settings extends MX_Controller {
     }
     
     public function changePass(){
-        $this->page->view('settings/changepass');
+        $this->load->view('settings/changepass');
     }
 
     public function editPass()
@@ -23,7 +23,7 @@ class Settings extends MX_Controller {
         date_default_timezone_set('Asia/Jakarta');
         $data['passlama'] = $_POST['passlama'];
         $data['password'] = md5($_POST['password']);
-        $data['update_by'] = $this->session->admin->admin_id;
+        $data['update_by'] = $this->session->user->users_id;
         $data['now'] = date('Y-m-d H:m:s');
 
         $row = $this->model_settings->validasiPass($data);

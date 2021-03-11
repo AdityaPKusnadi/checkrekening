@@ -9,6 +9,17 @@ class Model_checkrekening extends CI_Model {
 		return $data;
 	}
 
+    public function viewDetailRekening($id){
+        $this->db->select('a.*,b.singkatan,c.*');
+        $this->db->from('tbl_rekening a');
+        $this->db->join('tbl_bank b','a.bank_id=b.bank_id','left');
+        $this->db->join('tbl_rekening_foto c','a.rekening_id=c.rekening_id','left');
+        $this->db->where('a.rekening_id',$id);
+        
+        $data = $this->db->get()->row();
+        return $data;
+    }
+
 	public function listAllBank(){
         $data = $this->db->from('tbl_bank')->where(array('deleted' => '0'))->order_by('nama', 'asc')->get()->result();
 

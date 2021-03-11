@@ -120,11 +120,6 @@ public function listRekeningById($id)
     $this->db->join('tbl_rekening_foto c','a.rekening_id=c.rekening_id','left');
     $this->db->where('a.rekening_id',$id);
 
-    // $this->db->select('a.*,b.nama as KategoriName,c.*');
-    // $this->db->from('tbl_barang a');
-    // $this->db->join('tbl_kategori b','a.kategori_id=b.kategori_id','left');
-    // $this->db->join('tbl_barang_foto c','a.barang_id=c.barang_id','left');
-    // $this->db->where('a.barang_id',$id);
     $data = $this->db->get()->row();
     return $data;
 }
@@ -537,6 +532,17 @@ public function validasiUpdateWA($data)
 }
 
 //
+
+public function viewDetailRekening($id){
+    $this->db->select('a.*,b.singkatan,c.*');
+    $this->db->from('tbl_rekening a');
+    $this->db->join('tbl_bank b','a.bank_id=b.bank_id','left');
+    $this->db->join('tbl_rekening_foto c','a.rekening_id=c.rekening_id','left');
+    $this->db->where('a.rekening_id',$id);
+    
+    $data = $this->db->get()->row();
+    return $data;
+}
 
 public function viewDetailBarang($id)
 {

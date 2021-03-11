@@ -272,6 +272,12 @@ class Checkrekening extends MX_Controller {
 		// var_dump($data);die;
 		$this->load->view('check/listdata',$data);
 	}
+
+	public function ajaxrekening(){
+		$id = $_POST['rekening_id'];
+		$res = $this->model_checkrekening->viewDetailRekening($id);
+		echo json_encode($res);
+	}
 	
 }
 

@@ -1037,6 +1037,12 @@ class Master_Data extends MX_Controller {
 
 	//
 
+	public function ajaxrekening(){
+		$id = $_POST['rekening_id'];
+		$res = $this->model_master->viewDetailRekening($id);
+		echo json_encode($res);
+	}
+
 	public function ajaxbarang()
 	{
 		$id = $_POST['idbarang'];
