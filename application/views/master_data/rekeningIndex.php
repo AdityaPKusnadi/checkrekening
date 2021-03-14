@@ -216,7 +216,7 @@ if (!$this->session->has_userdata('user')){
                 <?php 
                 $no =1;
                 foreach ($daftar as $d): 
-			    $status = $d->delete =3?"<span class='badge badge-pill badge-success'>Di Setujui</span>":"<span class='badge badge-pill badge-danger'>Di Tolak</span>";
+			    $status = $d->delete =3?"<span class='badge badge-pill badge-warning'>Tidak Di Setujui / Belum</span>":"<span class='badge badge-pill badge-success'>Di Setujui</span>";
 				?>
                   <tr>
                     <td><?= $no; ?></td>
@@ -227,7 +227,7 @@ if (!$this->session->has_userdata('user')){
 					<td><?= $status ?></td>
                     <td>
 					<button type="button" class="btn btn-warning" data-toggle="tooltip" data-target="#modalBarang" data-placement="bottom" title="View Data" onclick="viewdata(<?= $d->rekening_id; ?>)"><i class="fas fa-eye"></i></button>
-					<?php if($d->deleted = 0): ?>
+					<?php if($d->deleted = 3): ?>
                       <a type="button" href="<?= site_url('checkrekening/editRekeningForm/'.$d->rekening_id) ?>" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Edit Data"><i class="fas fa-edit"></i></a>
                       <button type="button" class="btn btn-danger deleteRekening" data-toggle="tooltip" data-placement="bottom" title="Delete Data" data-id="<?= $d->rekening_id; ?>" data-nama="<?= $d->rekening; ?>"><i class="fas fa-trash"></i></button>
 					  <?php endif; ?>
