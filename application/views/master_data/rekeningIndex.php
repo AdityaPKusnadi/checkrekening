@@ -208,23 +208,29 @@ if (!$this->session->has_userdata('user')){
                   <th width="1%">Bank</th>
                   <th width="1%">Atas Nama</th>
                   <th width="30%">Kronologi</th>
+				  <th width="30%">Status Approval</th>
                   <th width="15%">Aksi</th>
                 </tr>
               </thead>
               <tbody>
                 <?php 
                 $no =1;
-                foreach ($daftar as $d): ?>
+                foreach ($daftar as $d): 
+			    $status = $d->delete =3?"<span class='badge badge-pill badge-success'>Di Setujui</span>":"<span class='badge badge-pill badge-danger'>Di Tolak</span>";
+				?>
                   <tr>
                     <td><?= $no; ?></td>
                     <td><?= $d->rekening; ?></td>                    
                     <td><?= $d->singkatan; ?></td>
                     <td><?= $d->atas_nama; ?></td>
                     <td><?= $d->kronologi; ?></td>
+					<td><?= $status ?></td>
                     <td>
 					<button type="button" class="btn btn-warning" data-toggle="tooltip" data-target="#modalBarang" data-placement="bottom" title="View Data" onclick="viewdata(<?= $d->rekening_id; ?>)"><i class="fas fa-eye"></i></button>
+					<?php if($d->deleted = 0): ?>
                       <a type="button" href="<?= site_url('checkrekening/editRekeningForm/'.$d->rekening_id) ?>" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Edit Data"><i class="fas fa-edit"></i></a>
                       <button type="button" class="btn btn-danger deleteRekening" data-toggle="tooltip" data-placement="bottom" title="Delete Data" data-id="<?= $d->rekening_id; ?>" data-nama="<?= $d->rekening; ?>"><i class="fas fa-trash"></i></button>
+					  <?php endif; ?>
                     </td>
                   </tr>
                   <?php
