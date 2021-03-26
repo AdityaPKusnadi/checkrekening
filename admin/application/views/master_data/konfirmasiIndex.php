@@ -18,16 +18,30 @@
           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h6 class="m-0 font-weight-bold text-default">Data Rekening</h6>
           </div>
-          <!-- Alert jika gagal delete -->
-          <?php if ($this->session->flashdata('deleteRekening') == 'failed'): ?>
+          <!-- Alert jika diconfirm delete -->
+          <?php if ($this->session->flashdata('confirmrekening') == 'failed'): ?>
             <script>
-              toastr.error('Gagal Menghapus Data','Berhasil',{"showDuration": "2000","closeButton": true,"timeOut": "5000"});
+              toastr.error('Gagal Konfirmasi Data','Berhasil',{"showDuration": "2000","closeButton": true,"timeOut": "5000"});
             </script>
           <?php endif; ?>
 
-          <?php if ($this->session->flashdata('deleteRekening') == 'berhasil'): ?>
+          <?php if ($this->session->flashdata('confirmrekening') == 'berhasil'): ?>
             <script>
-              toastr.success('Berhasil Menghapus Data','Berhasil',{"showDuration": "2000","closeButton": true,"timeOut": "5000",});
+              toastr.success('Berhasil Konfirmasi Data','Berhasil',{"showDuration": "2000","closeButton": true,"timeOut": "5000",});
+            </script>
+          <?php endif; ?>
+          <!--  -->
+
+          <!-- Alert jika direect delete -->
+          <?php if ($this->session->flashdata('rejectrekening') == 'failed'): ?>
+            <script>
+              toastr.error('Gagal Tolak Data','Berhasil',{"showDuration": "2000","closeButton": true,"timeOut": "5000"});
+            </script>
+          <?php endif; ?>
+
+          <?php if ($this->session->flashdata('rejectrekening') == 'berhasil'): ?>
+            <script>
+              toastr.success('Berhasil Tolak Data','Berhasil',{"showDuration": "2000","closeButton": true,"timeOut": "5000",});
             </script>
           <?php endif; ?>
           <!--  -->

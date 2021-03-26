@@ -971,10 +971,10 @@ class Master_Data extends MX_Controller {
 		$res = $this->model_master->deleteData($where, 'tbl_rekening', $data);
 		// var_dump($res);die;
 		if($res){
-			$this->session->set_flashdata('deleteRekening', 'berhasil');
+			$this->session->set_flashdata('confirmrekening', 'berhasil');
 			redirect(site_url('Master_Data/listRekening')); 
 		}else{
-			$this->session->set_flashdata('deleteRekening', 'failed');
+			$this->session->set_flashdata('confirmrekening', 'failed');
 			redirect(site_url('Master_Data/listRekening')); 
 		}
 	}
@@ -990,10 +990,10 @@ class Master_Data extends MX_Controller {
 		$res = $this->model_master->deleteData($where, 'tbl_rekening', $data);
 		// var_dump($res);die;
 		if($res){
-			$this->session->set_flashdata('deleteRekening', 'berhasil');
+			$this->session->set_flashdata('rejectrekening', 'berhasil');
 			redirect(site_url('Master_Data/listRekening')); 
 		}else{
-			$this->session->set_flashdata('deleteRekening', 'failed');
+			$this->session->set_flashdata('rejectrekening', 'failed');
 			redirect(site_url('Master_Data/listRekening')); 
 		}
 	}
