@@ -52,7 +52,7 @@ class Model_checkrekening extends CI_Model {
 		$this->db->where('a.status','user');
 		$this->db->where('a.create_by',$id);
         $data = $this->db->get()->result();
-        // var_dump($id);die;
+        // var_dump($data);die;
         return $data;
 	}
 

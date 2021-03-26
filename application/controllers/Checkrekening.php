@@ -99,6 +99,7 @@ class Checkrekening extends MX_Controller {
 
 	public function listRekening($id){
 		$data['daftar'] = $this->model_checkrekening->listAllRekeningByUser($id);
+		// var_dump($data['daftar']);
 		$this->load->view('master_data/rekeningIndex',$data);
 	}
 
