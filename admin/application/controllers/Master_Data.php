@@ -972,10 +972,10 @@ class Master_Data extends MX_Controller {
 		// var_dump($res);die;
 		if($res){
 			$this->session->set_flashdata('confirmrekening', 'berhasil');
-			redirect(site_url('Master_Data/listRekening')); 
+			redirect(site_url('Master_Data/listKonfirmasi')); 
 		}else{
 			$this->session->set_flashdata('confirmrekening', 'failed');
-			redirect(site_url('Master_Data/listRekening')); 
+			redirect(site_url('Master_Data/listKonfirmasi')); 
 		}
 	}
 
