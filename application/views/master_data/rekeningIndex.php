@@ -310,17 +310,17 @@ if (!$this->session->has_userdata('user')){
 					html += '<td scope="row"><ul>'; 
 					if (obj['foto_utama']!=null && obj['foto_utama']!='' && obj['foto_utama']!='null.png' && obj['foto_utama']!='0') {
 						html += '<img src="';
-						html += "<?= base_url('assets/img/barang/') ?>"+obj['foto_utama'];
+						html += "<?= base_url('./admin/assets/img/barang/') ?>"+obj['foto_utama'];
 						html += '" width="125" height="150" style="padding-right:3px;padding-bottom:3px;"></img>';
 					} 
 					if(obj['foto_1']!=null && obj['foto_1']!='' && obj['foto_1']!='null.png' && obj['foto_1']!='0'){
 						html += '<img src="';
-						html += "<?= base_url('assets/img/barang/') ?>"+obj['foto_1'];
+						html += "<?= base_url('./admin/assets/img/barang/') ?>"+obj['foto_1'];
 						html += '" width="125" height="150" style="padding-right:3px;padding-bottom:3px;"></img>';
 					} 
 					if (obj['foto_2']!=null && obj['foto_2']!='' && obj['foto_2']!='null.png' && obj['foto_2']!='0') {
 						html += '<img src="';
-						html += "<?= base_url('assets/img/barang/') ?>"+obj['foto_2'];
+						html += "<?= base_url('./admin/assets/img/barang/') ?>"+obj['foto_2'];
 						html += '" width="125" height="150" style="padding-right:3px;padding-bottom:3px;"></img>';
 					}
 

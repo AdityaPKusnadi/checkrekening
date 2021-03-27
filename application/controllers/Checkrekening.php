@@ -143,7 +143,7 @@ class Checkrekening extends MX_Controller {
 
 	private function _uploadUtama($imageId)
 	{
-		$config['upload_path']          = './assets/img/barang/';
+		$config['upload_path']          = './admin/assets/img/barang/';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
 		$config['overwrite']			= true;
 
