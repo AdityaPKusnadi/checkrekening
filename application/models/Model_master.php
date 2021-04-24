@@ -23,6 +23,7 @@ class Model_master extends CI_Model {
         $this->db->from('tbl_rekening a');
         $this->db->join('tbl_bank b','a.bank_id=b.bank_id','left');
         $this->db->where('a.deleted','0');
+        $this->db->where('a.deleted','6');
         $data = $this->db->get()->result();
 
         return $data;
