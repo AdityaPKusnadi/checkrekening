@@ -25,7 +25,7 @@ class Model_master extends CI_Model {
         $this->db->where('a.deleted','0');
         $this->db->where('a.deleted','6');
         $data = $this->db->get()->result();
-
+        // var_dump($data);die;
         return $data;
     }
 

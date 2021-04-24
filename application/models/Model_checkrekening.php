@@ -47,7 +47,7 @@ class Model_checkrekening extends CI_Model {
         $this->db->from('tbl_rekening a');
         $this->db->join('tbl_bank b','a.bank_id=b.bank_id','left');
         $this->db->join('tbl_rekening_foto c','a.rekening_id=c.rekening_id','left');
-        $deleted = "( a.deleted=3 OR a.deleted=0)";
+        $deleted = "( a.deleted=3 OR a.deleted=0 or a.deleted=6)";
         $this->db->where($deleted);
 		$this->db->where('a.status','user');
 		$this->db->where('a.create_by',$id);
