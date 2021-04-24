@@ -34,6 +34,10 @@ if (!$this->session->has_userdata('user')){
 
 </head>
 <style>
+	/* .zoom:hover {
+    transform: scale(3); (150% zoom - Note: if the zoom is too large, it will go outside of the viewport)
+} */
+
 	.btn-info {
 		color: #fff;
 		background-color: #1b94c4;
@@ -207,7 +211,7 @@ if (!$this->session->has_userdata('user')){
                   <th width="1%">No Rek</th>
                   <th width="1%">Bank</th>
                   <th width="1%">Atas Nama</th>
-                  <th width="30%">Kronologi</th>
+                  <!-- <th width="30%">Kronologi</th> -->
 				  <th width="30%">Status Approval</th>
                   <th width="15%">Aksi</th>
                 </tr>
@@ -218,9 +222,11 @@ if (!$this->session->has_userdata('user')){
                 foreach ($daftar as $d):
 				
 				if($d->deleted==="3"){
-					$status="<span class='badge badge-pill badge-warning'>Tidak Di Setujui / Belum</span>";
+					$status="<span class='badge badge-pill badge-warning'>Belum Di Setujui </span>";
 				}else if($d->deleted==="0"){
 					$status="<span class='badge badge-pill badge-success'>Di Setujui</span>";
+				}else if($d->deleted==="6"){
+					$status="<span class='badge badge-pill badge-danger'>Di Tolak</span>";
 				}
 				
 				?>
@@ -229,7 +235,7 @@ if (!$this->session->has_userdata('user')){
                     <td><?= $d->rekening; ?></td>                    
                     <td><?= $d->singkatan; ?></td>
                     <td><?= $d->atas_nama; ?></td>
-                    <td><?= $d->kronologi; ?></td>
+                    <!-- <td><?php // $d->kronologi; ?></td> -->
 					<td><?= $status ?></td>
                     <td>
 					<button type="button" class="btn btn-warning" data-toggle="tooltip" data-target="#modalBarang" data-placement="bottom" title="View Data" onclick="viewdata(<?= $d->rekening_id; ?>)"><i class="fas fa-eye"></i></button>
@@ -275,6 +281,16 @@ if (!$this->session->has_userdata('user')){
 	<script src="<?php echo base_url('/assets/js/ruang-admin.min.js'); ?>"></script>
 
 	<script>
+	$(document).ready(function () {
+    var table = $('#dataTableHover').DataTable({
+    columnDefs: [
+      {
+        targets: 1,
+        className: 'zoom'
+      }
+    ]
+  });
+} );
 		function viewdata(id) {
 		$.ajax({
 		url: '<?= site_url('/checkrekening/ajaxrekening') ?>',
@@ -288,7 +304,7 @@ if (!$this->session->has_userdata('user')){
 
 		var html = '';
 		html += '<div class="modal fade" id="modalBarang" tabindex="-1" role="dialog" aria-labelledby="modalBarangLabel" aria-hidden="true">';
-		html += '<div class="modal-dialog" role="document">';
+		html += '<div class="modal-dialog modal-lg" role="document">';
 		html += '<div class="modal-content">';
 		html += '<div class="modal-header">';
 		html += '<h5 class="modal-title" id="modalBarangLabel">Detail Data Barang</h5>';
@@ -304,24 +320,24 @@ if (!$this->session->has_userdata('user')){
 		html += '<tr><td scope="row">Bank</td>';
 		html += '<td scope="row">'+obj['singkatan']+'</td></tr>';
 		html += '<tr><td scope="row">Kronologi</td>';
-		html += '<td scope="row">'+obj['kronologi']+'</td></tr>';
+		html += '<td scope="row"><p class="text-justify text-monospace">'+obj['kronologi']+'</p></td></tr>';
 		
 		
 					html += '<td scope="row"><ul>'; 
 					if (obj['foto_utama']!=null && obj['foto_utama']!='' && obj['foto_utama']!='null.png' && obj['foto_utama']!='0') {
 						html += '<img src="';
 						html += "<?= base_url('./admin/assets/img/barang/') ?>"+obj['foto_utama'];
-						html += '" width="125" height="150" style="padding-right:3px;padding-bottom:3px;"></img>';
+						html += '" width="200" height="350" style="padding-right:3px;padding-bottom:3px;"></img>';
 					} 
 					if(obj['foto_1']!=null && obj['foto_1']!='' && obj['foto_1']!='null.png' && obj['foto_1']!='0'){
 						html += '<img src="';
 						html += "<?= base_url('./admin/assets/img/barang/') ?>"+obj['foto_1'];
-						html += '" width="125" height="150" style="padding-right:3px;padding-bottom:3px;"></img>';
+						html += '" width="200" height="350" style="padding-right:3px;padding-bottom:3px;"></img>';
 					} 
 					if (obj['foto_2']!=null && obj['foto_2']!='' && obj['foto_2']!='null.png' && obj['foto_2']!='0') {
 						html += '<img src="';
 						html += "<?= base_url('./admin/assets/img/barang/') ?>"+obj['foto_2'];
-						html += '" width="125" height="150" style="padding-right:3px;padding-bottom:3px;"></img>';
+						html += '" width="200" height="350" style="padding-right:3px;padding-bottom:3px;"></img>';
 					}
 
 					html += '</tr></tbody></table></div></div></div>';

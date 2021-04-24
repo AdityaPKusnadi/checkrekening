@@ -984,7 +984,7 @@ class Master_Data extends MX_Controller {
 		date_default_timezone_set('Asia/Jakarta');
 		$data['update_by'] = $this->session->admin->admin_id;
 		$data['now'] = date('Y-m-d H:m:s');
-		$data['delete'] = "1";
+		$data['delete'] = "6";
 
 		$where = array('rekening_id' => $id);
 		$res = $this->model_master->deleteData($where, 'tbl_rekening', $data);

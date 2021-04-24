@@ -1,3 +1,8 @@
+<style>
+.zoom:hover {
+    transform: scale(3); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+</style>
 <!-- Container Fluid-->
 <div class="container-fluid" id="container-wrapper">
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -41,7 +46,7 @@
                   <th width="5%">No Rek</th>
                   <th width="5%">Bank</th>
                   <th width="5%">Atas Nama</th>
-                  <th width="30%">Kronologi</th>
+                  <!-- <th width="30%">Kronologi</th> -->
                   <th width="15%">Aksi</th>
                 </tr>
               </thead>
@@ -51,11 +56,11 @@
                 foreach ($daftar as $d): ?>
                   <tr>
                   <td><?= $no; ?></td>
-                    <td><img src="<?= base_url('/assets/img/barang/'.$d->foto_utama) ?>" alt="" width="100px" height="100px"></td>
+                    <td><img src="<?= base_url('/assets/img/barang/'.$d->foto_utama) ?>" alt="" width="300px" height="300px"></td>
                     <td><?= $d->rekening; ?></td>                    
                     <td><?= $d->singkatan; ?></td>
                     <td><?= $d->atas_nama; ?></td>
-                    <td><?= $d->kronologi; ?></td>
+                    <!-- <td><?php // $d->kronologi; ?></td> -->
                     <td>
                     <button type="button" class="btn btn-warning" data-toggle="tooltip" data-target="#modalBarang" data-placement="bottom" title="View Data" onclick="viewdata(<?= $d->rekening_id; ?>)"><i class="fas fa-eye"></i></button>
                       <a type="button" href="<?= site_url('Master_Data/editRekeningForm/'.$d->rekening_id) ?>" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Edit Data"><i class="fas fa-edit"></i></a>
@@ -81,6 +86,17 @@
 
 
 <script>
+  $(document).ready(function () {
+    var table = $('#dataTableHover').DataTable({
+    columnDefs: [
+      {
+        targets: 1,
+        className: 'zoom'
+      }
+    ]
+  });
+} );
+
   function viewdata(id) {
     $.ajax({
       url: 'ajaxrekening',
@@ -90,11 +106,11 @@
       },
       success: function (res) {
        var obj = JSON.parse(res);
-       console.log(obj);
+      // console.log(obj);
 
        var html = '';
        html += '<div class="modal fade" id="modalBarang" tabindex="-1" role="dialog" aria-labelledby="modalBarangLabel" aria-hidden="true">';
-       html += '<div class="modal-dialog" role="document">';
+       html += '<div class="modal-dialog modal-lg" role="document">';
        html += '<div class="modal-content">';
        html += '<div class="modal-header">';
        html += '<h5 class="modal-title" id="modalBarangLabel">Detail Data Barang</h5>';
@@ -110,24 +126,24 @@
        html += '<tr><td scope="row">Bank</td>';
        html += '<td scope="row">'+obj['singkatan']+'</td></tr>';
        html += '<tr><td scope="row">Kronologi</td>';
-       html += '<td scope="row">'+obj['kronologi']+'</td></tr>';
+       html += '<td scope="row"><p class="text-justify text-monospace">'+obj['kronologi']+'</p></td></tr>';
        
       
-                 html += '<td scope="row"><ul>'; 
+                 html += '<td scope="row"><ul >'; 
                  if (obj['foto_utama']!=null && obj['foto_utama']!='' && obj['foto_utama']!='null.png' && obj['foto_utama']!='0') {
                      html += '<img src="';
                      html += "<?= base_url('assets/img/barang/') ?>"+obj['foto_utama'];
-                     html += '" width="125" height="150" style="padding-right:3px;padding-bottom:3px;"></img>';
+                     html += '" width="200" height="350" style="padding-right:3px;padding-bottom:3px;"></img>';
                    } 
                    if(obj['foto_1']!=null && obj['foto_1']!='' && obj['foto_1']!='null.png' && obj['foto_1']!='0'){
                      html += '<img src="';
                      html += "<?= base_url('assets/img/barang/') ?>"+obj['foto_1'];
-                     html += '" width="125" height="150" style="padding-right:3px;padding-bottom:3px;"></img>';
+                     html += '" width="200" height="350" style="padding-right:3px;padding-bottom:3px;"></img>';
                    } 
                    if (obj['foto_2']!=null && obj['foto_2']!='' && obj['foto_2']!='null.png' && obj['foto_2']!='0') {
                      html += '<img src="';
                      html += "<?= base_url('assets/img/barang/') ?>"+obj['foto_2'];
-                     html += '" width="125" height="150" style="padding-right:3px;padding-bottom:3px;"></img>';
+                     html += '" width="200" height="350" style="padding-right:3px;padding-bottom:3px;"></img>';
                    }
 
                  html += '</tr></tbody></table></div></div></div>';
