@@ -423,7 +423,7 @@ if (!$this->session->has_userdata('admin')){
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',
 				cancelButtonColor: '#d33',
-				confirmButtonText: 'Yes, delete!'
+				confirmButtonText: 'Yes, Reject!'
 			}).then((result) => {
 				if (result.isConfirmed) {
 					window.location.href = ("<?= site_url('Master_Data/tolakRekening/') ?>" + id);
