@@ -34,7 +34,7 @@
 
 <div class="container-fluid" id="container-wrapper">
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Data User</h1>
+    <h1 class="h3 mb-0 text-gray-800">Data Admin</h1>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="<?= site_url('dashboard') ?>">Home</a></li>
       <li class="breadcrumb-item">Data Master</li>
@@ -49,7 +49,7 @@
       <div class="card mb-4">
         <div class="col-12">
           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-default">Tambah Data User</h6>
+            <h6 class="m-0 font-weight-bold text-default">Tambah Data Admin</h6>
             <a href="<?= site_url('Master_Data/user') ?>" type="button" class="btn btn-info"><i class="fas fa-arrow-left"> Back</i></a>
           </div>
           <div class="card-body">

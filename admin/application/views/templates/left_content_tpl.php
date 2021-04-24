@@ -60,7 +60,7 @@ $edit = $this->uri->segment($url_count-1);
 
 					<!-- <a class="collapse-item <?php //if($url == site_url('/Master_Data/barang') || $url == site_url('/Master_Data/barangForm')  || $edit=='editBarangForm'){echo "active";} ?>" href="<?php //echo site_url('/Master_Data/barang'); ?>">Barang</a> -->
 
-					<a class="collapse-item <?php if($url == site_url('/Master_Data/user') || $url == site_url('/Master_Data/userForm')  || $edit=='editUserForm'){echo "active";} ?>" href="<?php echo site_url('/Master_Data/user'); ?>">User</a>
+					<a class="collapse-item <?php if($url == site_url('/Master_Data/user') || $url == site_url('/Master_Data/userForm')  || $edit=='editUserForm'){echo "active";} ?>" href="<?php echo site_url('/Master_Data/user'); ?>">Admin</a>
 
 					<!-- <a class="collapse-item <?php// if($url == site_url('/Master_Data/lokasi') || $url == site_url('/Master_Data/lokasiForm')  || $edit=='editLokasiForm'){echo "active";} ?>" href="<?php //echo site_url('/Master_Data/lokasi'); ?>">Lokasi</a> -->
 
