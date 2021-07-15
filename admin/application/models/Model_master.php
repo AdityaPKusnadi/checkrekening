@@ -328,6 +328,15 @@ public function deleteData($where, $table, $data)
     return $data;
 }
 
+public function updatePenolakan($value,$id)
+{
+    $this->db->set('kronologi',$value);
+    $this->db->where('rekening_id',$id);
+    $data = $this->db->update('tbl_rekening');
+
+    return $data;
+}
+
     // 
 
 public function updateWarna($data)

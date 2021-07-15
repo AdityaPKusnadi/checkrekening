@@ -20,6 +20,7 @@
 
   <!-- Custom styles for this template -->
   <link href="<?= base_url('assets/css/landing-page.min.css')?>" rel="stylesheet">
+  <script src="<?php echo base_url('/assets/sweetalert/sweetalert2.all.min.js'); ?>"></script>
 
 </head>
 
@@ -39,7 +40,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xl-9 mx-auto">
-          <h1 class="mb-5">Verifikasi rekening!</h1>
+          <h1 class="mb-3">Verifikasi rekening!</h1>
         </div>
         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
           <form>
@@ -165,16 +166,27 @@
         console.log(data);
 
         if(data == "404"){
-          $('#notifikasi404').show();
-          $('#notifikasiverif').removeAttr('style').hide();
+          // $('#notifikasi404').show();
+          // $('#notifikasiverif').removeAttr('style').hide();
+          Swal.fire({
+            icon: 'error',
+            title: 'Data Tidak Terverifikasi',
+            text: 'Data nomer rekening belum pernah dilaporkan dalam sistem kami!'
+          });
           $('#no_rekening').val('');
         }else{
-          $('#notifikasiverif').show();
-          $('#notifikasi404').removeAttr('style').hide();
+          Swal.fire({
+            icon: 'success',
+            title: 'Data Terverifikasi',
+            text: 'Data nomer rekening pernah dilaporkan dalam sistem kami!',
+            footer: '<a href="<?= site_url('/checkrekening/list/')?>'+nomer_rekening+'">Detail Lebih lanjut</a>'
+          });
+          // $('#notifikasiverif').show();
+          // $('#notifikasi404').removeAttr('style').hide();
           $('#no_rekening').val('');
-          html = "<a href='<?= site_url('/checkrekening/list/')?>"+nomer_rekening+"'>Detail!</a>";
-          console.log(html);
-          $("#link").html(html);
+          // html = "<a href='<?php//= site_url('/checkrekening/list/')?>"+nomer_rekening+"'>Detail!</a>";
+          // console.log(html);
+          // $("#link").html(html);
         }
           
         }

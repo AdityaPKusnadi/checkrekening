@@ -211,7 +211,7 @@ if (!$this->session->has_userdata('user')){
                   <th width="1%">No Rek</th>
                   <th width="1%">Bank</th>
                   <th width="1%">Atas Nama</th>
-                  <!-- <th width="30%">Kronologi</th> -->
+                  <th width="30%">Alasan Penolakan</th>
 				  <th width="30%">Status Approval</th>
                   <th width="15%">Aksi</th>
                 </tr>
@@ -235,7 +235,7 @@ if (!$this->session->has_userdata('user')){
                     <td><?= $d->rekening; ?></td>                    
                     <td><?= $d->singkatan; ?></td>
                     <td><?= $d->atas_nama; ?></td>
-                    <!-- <td><?php // $d->kronologi; ?></td> -->
+                    <td><?= ($d->deleted == 6)? $d->kronologi : '' ?></td>
 					<td><?= $status ?></td>
                     <td>
 					<button type="button" class="btn btn-warning" data-toggle="tooltip" data-target="#modalBarang" data-placement="bottom" title="View Data" onclick="viewdata(<?= $d->rekening_id; ?>)"><i class="fas fa-eye"></i></button>
@@ -319,8 +319,13 @@ if (!$this->session->has_userdata('user')){
 		html += '<td scope="row">'+obj['atas_nama']+'</td></tr>';
 		html += '<tr><td scope="row">Bank</td>';
 		html += '<td scope="row">'+obj['singkatan']+'</td></tr>';
+		if(obj['deleted'] == '6'){
+		html += '<tr><td scope="row">Alasan Penolakan</td>';
+		html += '<td scope="row">'+obj['kronologi']+'</td></tr>';
+		}else{
 		html += '<tr><td scope="row">Kronologi</td>';
 		html += '<td scope="row"><p class="text-justify text-monospace">'+obj['kronologi']+'</p></td></tr>';
+		}
 		
 		
 					html += '<td scope="row"><ul>'; 

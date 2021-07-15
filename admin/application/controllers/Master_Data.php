@@ -979,15 +979,20 @@ class Master_Data extends MX_Controller {
 		}
 	}
 
-	public function tolakRekening($id)
+	public function tolakRekening($id,$value)
 	{
+		// var_dump($id,$value);
+		// die;
 		date_default_timezone_set('Asia/Jakarta');
 		$data['update_by'] = $this->session->admin->admin_id;
 		$data['now'] = date('Y-m-d H:m:s');
 		$data['delete'] = "6";
+		$data['value'] = urldecode($value);
 
 		$where = array('rekening_id' => $id);
 		$res = $this->model_master->deleteData($where, 'tbl_rekening', $data);
+
+		$res2 = $this->model_master->updatePenolakan($value,$id);
 		// var_dump($res);die;
 		if($res){
 			$this->session->set_flashdata('rejectrekening', 'berhasil');

@@ -22,6 +22,10 @@ if (!$this->session->has_userdata('user')){
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css'/>
 	<link rel="stylesheet" href="<?= base_url('/assets/css/custom.css') ?>" >
 
+
+	
+
+
 	<script src="<?php echo base_url('/assets/sweetalert/sweetalert2.all.min.js'); ?>"></script>
 	<script src="<?php echo base_url('/assets/vendor/jquery/jquery.min.js'); ?>"></script>
 	<script src="<?php echo base_url('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
@@ -31,6 +35,12 @@ if (!$this->session->has_userdata('user')){
 	<script src="<?php echo base_url('/assets/bootstrap-select/js/bootstrap-select.min.js'); ?>"></script>
 	<script src="<?php echo base_url('/assets/dropzone/dist/min/dropzone.min.js'); ?>"></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
+	<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+	<script type="text/javascript">
+	tinymce.init({
+		selector: '#kronologi'
+	});
+  </script>
 
 </head>
 <style>

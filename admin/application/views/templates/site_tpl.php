@@ -417,16 +417,17 @@ if (!$this->session->has_userdata('admin')){
 			var id =  $(this).data('id');
 			var nama =  $(this).data('nama');
 			Swal.fire({
-				title: 'Confirmation',
-				text: 'Are you sure you want to Reject '+nama+'?',
+				title: 'Are you sure you want to Reject '+nama+'?',
 				icon: 'question',
+				input: 'text',
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',
 				cancelButtonColor: '#d33',
 				confirmButtonText: 'Yes, Reject!'
 			}).then((result) => {
+				// console.log(result);
 				if (result.isConfirmed) {
-					window.location.href = ("<?= site_url('Master_Data/tolakRekening/') ?>" + id);
+					window.location.href = ("<?= site_url('Master_Data/tolakRekening/') ?>" + id +'/'+result.value);
 				}
 			})
 		});
